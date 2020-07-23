@@ -12,12 +12,16 @@ def eating_cookies(n, cache=None):
         return 1
     elif n == 2:
         return 2
+    elif cache and cache[n] > 0:
+        return cache[n]
 
-    m3 = eating_cookies(n - 3)
-    m2 = eating_cookies(n - 2)
-    m1 = eating_cookies(n - 1)
+    if not cache:
+        cache = [0 for i in range(n+1)]
 
-    return m1 + m2 + m3
+    cache[n] = eating_cookies(
+        n - 3, cache) + eating_cookies(n - 2, cache) + eating_cookies(n - 1, cache)
+
+    return cache[n]
 
 
 if __name__ == "__main__":
