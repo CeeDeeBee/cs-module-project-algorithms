@@ -4,11 +4,11 @@ Returns: an integer
 '''
 
 
-def eating_cookies(n):
+def eating_cookies(n, cache=None):
     # Your code here
-    if n <= 0:
-        return 1
-    elif n == 1:
+    if n < 0:
+        return 0
+    elif n <= 1:
         return 1
     elif n == 2:
         return 2
